@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aula 5 Functions</title>
+
+	<script type="text/javascript">
+		
+			function testeUm(){
+
+					//GARANTINDO QUE AS VARIÁVEIS SERÃO DO TIPO NUMERICO
+					var alturaUm = parseFloat(),
+					baseUm = parseFloat();
+
+					var areaTriang = parseFloat(),
+					areaRet = parseFloat;
+
+					var pergunta = prompt('Digite se voce quer a area de um triagulo ou de um retangulo');
+
+					if (pergunta == 'r')
+					{
+						alturaUm = prompt('Altura:')
+						baseUm = prompt('Base:');
+						areaRet = alturaUm*baseUm;
+						alert('Area do retangulo: '+areaRet+ ' metros');
+						return areaRet;	
+					}
+					else if(pergunta == 't'){
+
+						alturaUm = prompt('Altura');
+						baseUm = prompt('Base');
+						areaTriang = (baseUm * alturaUm)/2;
+						alert('Area do triangulo: '+areaTriang+' metros');
+						return areaRet;
+					}
+			}
+
+			console.log(testeUm());
+
+
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

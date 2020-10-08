@@ -1,0 +1,119 @@
+//criar collection
+db.createCollection("Lojas")
+
+
+//inserts
+ db.Lojas.insert({
+ name:"Computador Gamer",
+ price:6900.00,
+ quantity:10,
+ category:"Eletronicos" })
+
+.........
+
+db.Lojas.insert({
+ name:"Computador Gamer",
+ price:6900.00,
+ quantity:10,
+ category:"Eletronicos",
+ tags: ["vermelho","i9","gamer"],
+ especificacao: { idFornecedor:ObjectId(),fornecedorEstado:"MG"}
+ })
+
+
+db.Lojas.insert({
+ name:"Computador Monstro",
+ price:7500.00,
+ quantity:10,
+ category:"Eletronicos",
+ tags: ["preto","i7","gamer"],
+ especificacao: { idFornecedor:ObjectId(),fornecedorEstado:"SP",precosMedios:{medias:[3000,4000,4500,6000]} }
+ })
+
+ db.Lojas.insertMany([
+ 	{id:1,name:"Mac",price:9000,category:"Gamer",tags:["preto","branco","i7","gamer","mac"]},
+ 	{id:2,name:"Pc Novo",price:6500,category:"Gamer",tags:["preto","branco","i7","gamer","mac"]},
+ 	{id:3,name:"Pc Gamer",price:7800,category:"Gamer",tags:["preto","branco","i7","gamer","mac"]},
+ 	{id:4,name:"NoteBook",price:10581,category:"Gamer",tags:["preto","branco","i7","gamer","mac"]}
+
+ ])
+
+ db.Lojas.insertOne({
+ name:"Computador Monster", price:5000.00, quantity:5, category:"Eletronicos", tags: ["branco","i7","gamer"], especificacao:{id:ObjectId(),fornecedorEstado:"SP",precosMedios:{medias:[3000,4000,4500,6000]} }
+ })
+
+ // ------------------------------------------------ // 
+ updates 
+
+ db.Lojas.update(
+ 	{"id":1},{$set:{"name":"Pc Monstruoso"}}
+ )
+
+  db.Lojas.updateOne(
+ 	{"id":2},{$set:{"name":"Apos update","price":00}}
+ )
+
+  db.Lojas.updateMany(
+ 	{"id":3},{$set:{"name":"Monster PC","price":600}}
+ )
+
+ // --------------------------------------------------- //
+ select com filtros
+
+  db.Lojas.find({"id":1}).pretty()
+
+  db.Lojas.find({$and: [{name:"NoteBook"},{id:4},{price:10581}]}).pretty()
+
+  db.Lojas.find({$or:[{name:"NoteBook"},{price:20100},{quantity:10}]}).pretty()
+
+  db.Lojas.find({id:{$exists:true}}).pretty()
+
+  db.Lojas.find({category:{$not:{$eq:"Gamer"}}}).pretty()
+
+  db.Lojas.find({$nor:[{quantity:10},{quantity:5},{quantity:{$exists:false} }]}).pretty()   (tudo que estiver aqui será negado ou seja será o resultado inverso)
+
+  // --------------------------------------------------------- // 
+  operadores de comparação
+
+  db.Lojas.find({quantity:{$eq:100}}).pretty()
+
+  db.Lojas.find({quantity:{$not:{ $eq:10}},quantity:{$exists:true}}).pretty()
+
+  db.Lojas.find({ $or:[ {quantity:{$exists:false},especificacao:{$exists:true} }, {id:{$exists:true}},{cDate:{$exists:true}}]  }).pretty()
+
+  db.Lojas.find({$and:[{price:{$ne:100}} ,{id:{$exists:true}}]}).pretty()
+
+
+// --------------------------------------------------------- // 
+  operadores de comparação numeral
+
+  db.Lojas.find({price:{$lt:1000}}).pretty() -- menor que 
+
+  db.Lojas.find({price:{$lte:1000}}).pretty() -- menor ou igual 
+
+  db.Lojas.find({price:{$gt:10000}}).pretty() -- maior
+
+  db.Lojas.find({price:{$gte:20000}}).pretty() -- maior ou igual 
+
+  db.Lojas.find({$and:[{price:{$gt:1000}},{price:{$lt:10000}}]}).pretty() -- between
+
+
+
+// --------------------------------------------------------- // 
+  seleção de alguns valores 
+
+  db.Lojas.find({},{quantity: 0},{tags:0})
+  db.Lojas.find({},{"name":1,"price":1,"tags":1}, {quantity:0} ).pretty()
+
+  db.Lojas.find({},{}).sort({price:-1}).pretty() // ordenar por preço decrescente
+  db.Lojas.find({},{name:1,price:1,}).sort({price:1,name:1}).pretty()
+
+  // --------------------------------------------------------- // 
+  Pula alguns valores e limitação de resultados  
+
+  db.Lojas.find({},{name:1,price:1,quantity:1,tags:1}).sort({price:-1}).limit(10).pretty()
+  db.Lojas.find({},{name:1,price:1,quantity:1,tags:1}).sort({price:-1}).skip(4).limit(10).pretty() // pula os quatro primeiros resultados
+
+
+
+

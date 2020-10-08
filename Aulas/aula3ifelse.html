@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>If e elses</title>
+
+
+<script type="text/javascript">
+
+	var notaAluno = prompt('Digite a nota do aluno:');
+	var media = 70;
+	var ident = false;
+
+	while(ident == false){
+		if (notaAluno >= media) {
+			ident = true;
+			alert('Aluno aprovado com '+notaAluno+ ' pontos.');
+		} else{
+			if(notaAluno < media - 10 ){
+				console.log('O aluno é burro.');
+				ident = false;
+				break;
+			}
+		}
+
+	}
+	
+
+</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

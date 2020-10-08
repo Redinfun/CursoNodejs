@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Utilizando DOM </title>
+	<style type="text/css">
+		
+		body{
+			background-color: rgb(68,135,169);
+			color: white;
+			font: normal 18pt Arial;
+
+		}
+
+	</style>
+</head>
+<body>
+
+	<h2 class ="divisao" style="text-align: center;">Utilizando as funções DOM(DOCUMENT OBJECT MODEL)</h2>
+	<p>Resultado</p>
+	<p>Aprendendo a utilizar o <b>DOM</b></p>
+	<div id="diva">Clique Aqui</div>
+
+	<script type="text/javascript">
+		//utilizando classes DOM  **[0] utilizado para denotar o primeiro elemento p
+		var p1 = window.document.getElementsByTagName('p')[0];
+
+		//função para escrever elemento paragrafo 0
+		window.document.write(p1.innerText);
+		p1.style.color = 'darkred';
+		
+		//modificando elementos atraves de variaveis
+		var corpo = window.document.body;
+		//corpo.style.background = 'lightgrey';
+
+		// CLASSE DOM PARA ELEMENTOS ID 
+		var divanei = window.document.getElementById('diva');
+		//divanei.style.background = 'darkblue';
+		//divanei.innerText = 'Mudei o texto utilizando DOM';
+
+		//UTILIZANDO QUERYSELECTOR() MAIS RECOMENDADO
+		var d = window.document.querySelector('h2.divisao');
+		d.style.background = 'tomato';
+		
+
+
+
+	</script>
+
+</body>
+</html>
