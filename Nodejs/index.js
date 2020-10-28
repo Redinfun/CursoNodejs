@@ -63,6 +63,6 @@ const Post = require('./models/Post')
 
 
 //função de callback (sempre que algo acontece ela é chamada.)
-app.listen(8086,function () {
+app.listen(8081,function () {
 	console.log("Servidor criado em http://localhost:8086");
 });
