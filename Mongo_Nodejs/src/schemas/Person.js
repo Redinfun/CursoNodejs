@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const createdPlugin = require('./plugins/created')
 
 
 const Person = new mongoose.Schema({
@@ -31,5 +32,7 @@ Person.methods.ageGreaterThan20 = function(age, cb) {
         cb(null, false)
     }
 }
+
+Person.plugin(createdPlugin,{})
 
 module.exports = mongoose.model('Person', Person)
