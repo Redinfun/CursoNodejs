@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 //mongo
 //mongoose.connect('mongodb://user:password@host:port/dbname')
-mongoose.connect('mongodb://localhost:27017/MongooseDb', { useUnifiedTopology: true,useNewUrlParser: true  }  )
+mongoose.connect('mongodb://localhost:27017/MongoDB', { useUnifiedTopology: true,useNewUrlParser: true  }  )
 
 //require instancia de index do src
 require('./src/index')(app)
